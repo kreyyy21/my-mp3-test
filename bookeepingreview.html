@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookkeeping Quiz</title>
+  <link rel="stylesheets" href="bookkeepoing.css">
+</head>
+<body>
+  <h1>Bookkeeping Quiz</h1>
+  <div id="quiz"></div>
+
+  <script>
+    const questions = [
+      { question: "What is the primary function of bookkeeping?", choices: ["Analyzing business trends", "Recording and categorizing financial transactions", "Preparing tax returns", "Supervising staff"], answer: "Recording and categorizing financial transactions" },
+      { question: "Bookkeepers are also referred to as:", choices: ["Internal auditors", "Financial managers", "Accounting clerks", "CFOs"], answer: "Accounting clerks" },
+      { question: "In small businesses, bookkeepers help owners by:", choices: ["Hiring staff", "Managing legal contracts", "Focusing on growth and staying compliant", "Creating advertisements"], answer: "Focusing on growth and staying compliant" },
+      { question: "Which system revolutionized modern bookkeeping?", choices: ["Single-entry", "Double-entry", "Triple-entry", "Digital-entry"], answer: "Double-entry" },
+      { question: "Who is known as the 'Father of Bookkeeping'?", choices: ["Aristotle", "Benedetto Cotrugli", "Luca Pacioli", "Leonardo da Vinci"], answer: "Luca Pacioli" },
+      { question: "When did bookkeeping gain professional recognition?", choices: ["1500s", "1600s", "1800s", "2000s"], answer: "1800s" },
+      { question: "Bookkeeping dates back to:", choices: ["700 BC", "2000 BC", "7000 BC", "1700 AD"], answer: "7000 BC" },
+      { question: "What technological advancement helped modernize bookkeeping in the 20th century?", choices: ["Spreadsheets", "Blockchain", "Calculators and digital worksheets", "Online banking"], answer: "Calculators and digital worksheets" },
+      { question: "What is the focus of bookkeepers compared to accountants?", choices: ["Strategic planning", "Business consulting", "Recording transactions", "Legal defense"], answer: "Recording transactions" },
+      { question: "Which law protects data in bookkeeping in the UK?", choices: ["Privacy Act", "Financial Act", "Data Protection Act 1998", "Bookkeeping Act 2020"], answer: "Data Protection Act 1998" },
+      { question: "What penalty does Section 24 of the Philippines' Revenue Regulations No. V-1 include for false entries?", choices: ["Community service", "Reprimand", "Fine and/or imprisonment", "Suspension"], answer: "Fine and/or imprisonment" },
+      { question: "What is required if bookkeeping records are not in English, Spanish, or a native language in the Philippines?", choices: ["Rewriting", "Translation or fines/imprisonment", "Verification", "Government certification"], answer: "Translation or fines/imprisonment" },
+      { question: "Which tool is NOT commonly used by bookkeepers?", choices: ["Manual worksheets", "Accounting software", "Financial modeling platforms", "Spreadsheets"], answer: "Financial modeling platforms" },
+      { question: "Which of these is a core competency of bookkeepers?", choices: ["Forecasting", "Trial balance preparation", "Auditing", "Financial consultation"], answer: "Trial balance preparation" },
+      { question: "What do accountants use to provide advice to businesses?", choices: ["Journals", "Tax returns", "Financial data from bookkeepers", "Receipts"], answer: "Financial data from bookkeepers" },
+      { question: "Bookkeepers focus on:", choices: ["Payroll strategy", "Hiring staff", "Daily financial transactions", "Investor meetings"], answer: "Daily financial transactions" },
+      { question: "Financial accounting focuses on:", choices: ["Management decision-making", "Internal data", "External users and transparency", "Government audits"], answer: "External users and transparency" },
+      { question: "Management accounting helps with:", choices: ["Auditing vendors", "Public reporting", "Internal decision-making", "Compliance fines"], answer: "Internal decision-making" },
+      { question: "Cost accounting is essential for:", choices: ["Bank transactions", "Product pricing and cost control", "Recruiting staff", "Auditing taxes"], answer: "Product pricing and cost control" },
+      { question: "Which field tracks public fund usage?", choices: ["Tax accounting", "Financial accounting", "Cost accounting", "Government accounting"], answer: "Government accounting" },
+      { question: "Which stakeholder uses financial statements to assess creditworthiness?", choices: ["Suppliers", "Lenders", "Customers", "Employees"], answer: "Lenders" },
+      { question: "Which role handles company payroll and tax compliance?", choices: ["Inventory Clerk", "Accounts Payable Clerk", "Payroll Clerk", "Controller"], answer: "Payroll Clerk" },
+      { question: "The role that sends invoices and manages collections is:", choices: ["Accounts Receivable Clerk", "Payroll Clerk", "Inventory Clerk", "Bookkeeper"], answer: "Accounts Receivable Clerk" },
+      { question: "Who oversees day-to-day accounting operations?", choices: ["CFO", "Inventory Clerk", "Accounting Manager", "Auditor"], answer: "Accounting Manager" },
+      { question: "A senior bookkeeper is responsible for:", choices: ["Processing payroll", "Preparing tax returns", "Overseeing junior bookkeepers", "Managing inventory"], answer: "Overseeing junior bookkeepers" },
+      { question: "Who is responsible for strategic financial planning?", choices: ["Controller", "CFO", "Bookkeeper", "Internal Auditor"], answer: "CFO" },
+      { question: "Which role audits and evaluates compliance and effectiveness?", choices: ["Payroll Clerk", "Accounting Manager", "Internal Auditor", "Inventory Clerk"], answer: "Internal Auditor" },
+      { question: "The accounting hierarchy ensures:", choices: ["Random workflows", "Centralized HR reporting", "Efficient workflow and accountability", "Product testing"], answer: "Efficient workflow and accountability" },
+      { question: "Accounting is primarily used for:", choices: ["Customer relationship management", "Data entry", "Strategic decision-making", "Advertising"], answer: "Strategic decision-making" },
+      { question: "Which skill is common to bookkeepers?", choices: ["Creative thinking", "Organizational skills", "Public speaking", "Coding"], answer: "Organizational skills" },
+      { question: "Accountants differ from bookkeepers in that they:", choices: ["Prepare payroll", "Track inventory", "Analyze and interpret data", "Send invoices"], answer: "Analyze and interpret data" },
+      { question: "A key responsibility of an Inventory Clerk is to:", choices: ["Reconcile bank statements", "Track company supplies", "Record journal entries", "Forecast profit"], answer: "Track company supplies" },
+      { question: "One outcome of bookkeeping is:", choices: ["Business loans", "Product development", "Organized financial records", "Customer reports"], answer: "Organized financial records" },
+      { question: "Which accounting field assists with budgeting and forecasting?", choices: ["Tax accounting", "Management accounting", "Government accounting", "Cost accounting"], answer: "Management accounting" },
+      { question: "Financial reports and tax filings are outcomes typically handled by:", choices: ["Bookkeepers", "Managers", "Accountants", "Clerks"], answer: "Accountants" },
+      { question: "Who is responsible for the integrity of records and reporting to management?", choices: ["Controller", "Bookkeeper", "Auditor", "Receivable Clerk"], answer: "Controller" },
+      { question: "What is one key feature of accounting software?", choices: ["Entertainment tracking", "Marketing", "Accuracy in recordkeeping", "Legal defense"], answer: "Accuracy in recordkeeping" },
+      { question: "What law mandates responsible handling of personal financial data in the UK?", choices: ["Revenue Code", "Data Protection Act 1998", "Financial Ethics Act", "Privacy Law"], answer: "Data Protection Act 1998" },
+      { question: "What happens if you violate Section 25 of the Bookkeeping Regulations (PH)?", choices: ["Death penalty", "Fine up to ₱300 or imprisonment up to 6 months", "Business closure", "Legal demotion"], answer: "Fine up to ₱300 or imprisonment up to 6 months" },
+      { question: "What separates accounting from bookkeeping?", choices: ["Financial forecasting and analysis", "Invoicing", "Posting debits", "Payroll management"], answer: "Financial forecasting and analysis" },
+      { question: "Trial balances are prepared to:", choices: ["Launch products", "Correct tax errors", "Check ledger accuracy", "Balance HR workload"], answer: "Check ledger accuracy" },
+      { question: "Which accounting field is regulated by tax laws?", choices: ["Government accounting", "Cost accounting", "Management accounting", "Tax accounting"], answer: "Tax accounting" },
+      { question: "The main task of a bookkeeper is to:", choices: ["Prepare budgets", "Supervise accounting staff", "Record daily financial transactions", "Conduct market analysis"], answer: "Record daily financial transactions" },
+      { question: "Forecasting models are tools typically used by:", choices: ["Bookkeepers", "Auditors", "Accountants", "Inventory clerks"], answer: "Accountants" },
+      { question: "Who ensures all financial laws are followed in reports?", choices: ["HR", "Internal Auditor", "Sales Manager", "Developer"], answer: "Internal Auditor" },
+      { question: "What’s the benefit of clear bookkeeping in small businesses?", choices: ["Lower marketing cost", "Reduced workload and better compliance", "Increased wages", "Avoiding HR processes"], answer: "Reduced workload and better compliance" }
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+
+    questions.forEach((q, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question";
+
+      const qTitle = document.createElement("p");
+      qTitle.innerHTML = `<strong>Q${index + 1}:</strong> ${q.question}`;
+      qDiv.appendChild(qTitle);
+
+      q.choices.forEach(choice => {
+        const choiceLabel = document.createElement("label");
+        const choiceInput = document.createElement("input");
+        choiceInput.type = "radio";
+        choiceInput.name = `question${index}`;
+        choiceInput.value = choice;
+        choiceLabel.appendChild(choiceInput);
+        choiceLabel.appendChild(document.createTextNode(` ${choice}`));
+        qDiv.appendChild(choiceLabel);
+        qDiv.appendChild(document.createElement("br"));
+      });
+
+      const showBtn = document.createElement("button");
+      showBtn.textContent = "Show Answer";
+      const answerText = document.createElement("div");
+      answerText.className = "answer";
+      answerText.textContent = `Answer: ${q.answer}`;
+
+      showBtn.addEventListener("click", () => {
+        answerText.style.display = "block";
+      });
+
+      qDiv.appendChild(showBtn);
+      qDiv.appendChild(answerText);
+      quizContainer.appendChild(qDiv);
+    });
+  </script>
+</body>
+</html>
